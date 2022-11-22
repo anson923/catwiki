@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="UTF-8">
     <title>
       Cat Wikipedia
     </title>
@@ -12,18 +13,40 @@
 
     <!-- CSS files -->
     <link rel="stylesheet" href="styles/general.css"/>
+    <link rel="stylesheet" href="/styles/header.css"/>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
   </head>
 
   <body>
     
-    <div class="header">
+    <!-- Header -->
+    <header class="header">
+      <div class="left-section">
+        <a href="./index.html" target="">
+          <button class="px-10 py-4 text-sm bg-cyan-500 rounded-full shadow-xl header-button ">
+            Cat Dictionary
+          </button>
+        </a>
+        
+      </div>
+      <a href="/index.html">
+        <img class="pagelogo" src="/resources/img/pageLogo.png" alt="Cat Wikipedia Logo"/>
+      </a>
+      
+      
+      <a href="./index.html" target="">
+        <button class="px-10 py-4 text-sm bg-cyan-500 rounded-full shadow-xl header-button ">
+          About Us
+        </button>
+      </a>
+    </header>
 
-    </div>
 
-    <img class="pagelogo" src="/resources/img/pageLogo.png" alt="Cat Wikipedia Logo"/>
-
+    <!-- Main Content -->
     <main class="content">
-
     </main>
   </body>
 

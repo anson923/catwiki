@@ -1,7 +1,10 @@
 body {
   font-family: Roboto, Arial;
+  margin-bottom: 1000px;
+  background-color: rgb(255, 221, 197);
 }
 
-.pagelogo {
-  height: 150px;
+.content {
+  margin-top: 180px;
+  text-align: center;
 }
