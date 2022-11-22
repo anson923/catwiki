@@ -19,8 +19,10 @@
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- Script -->
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
+    <!-- Script -->
     <script src="js/index.js"></script>
 
   </head>
@@ -50,46 +52,48 @@
 
     <!-- Main Content -->
     <main class="content">
+      <div id="cat-preview-grid" class="cat-preview-grid">
 
-      
-
-      <div class="cat-preview">
-        <div class="cat-preview-padding">
-          <img class="cat-image" src="https://cdn2.thecatapi.com/images/0XYvRd7oD.jpg"/>
-
-          <div class="cat-id">
-
-            <div class="cat-name">
-              Abyssinian
-            </div>
-
-            <div class="cat-born">
-              <img class="cat-flag" src="https://flagcdn.com/eg.svg">
-              <div class="cat-country">
-                Egypt
-              </div>
-            </div>
-
-          </div>
-          
-          <div class="cat-description">
-            good cat
-          </div>
-
-          <div class="cat-temperament">
-            Shy , Happy
-          </div>
-
-          <button class="px-4 py-2 text-sm bg-cyan-500 rounded-full shadow-xl cat-learn-more">
-            Learn More
-          </button>
-        </div>
       </div>
-
-
-
-
+      
     </main>
   </body>
 
 </html>
+
+
+
+<template id="cat-preview-template">
+  <div class="cat-preview">
+    <div class="cat-preview-padding">
+      <img id="cat-image" class="cat-image" src="dsngsdoimgso.png" alt="Unknown"/>
+
+      <div class="cat-id">
+
+        <div id="cat-name" class="cat-name">
+          Unknown
+        </div>
+
+        <div class="cat-born">
+          <img id="cat-flag" class="cat-flag" src="https://flagcdn.com/eg.svg">
+          <div id="cat-country" class="cat-country">
+            Unknown
+          </div>
+        </div>
+
+      </div>
+      
+      <div id="cat-description" class="cat-description">
+        Unknown
+      </div>
+
+      <div id="cat-temperament" class="cat-temperament">
+        Unknown
+      </div>
+
+      <button class="px-4 py-2 text-sm bg-cyan-500 rounded-full shadow-xl cat-learn-more">
+        Learn More
+      </button>
+    </div>
+  </div>
+</template>
