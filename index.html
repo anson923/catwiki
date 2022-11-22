@@ -14,15 +14,18 @@
     <!-- CSS files -->
     <link rel="stylesheet" href="styles/general.css"/>
     <link rel="stylesheet" href="/styles/header.css"/>
+    <link rel="stylesheet" href="/styles/cat_grid.css"/>
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
 
+    <!-- Script -->
+
+    <script src="js/index.js"></script>
+
   </head>
 
   <body>
-    <script src="js/index.js"></script>
-    
     <!-- Header -->
     <header class="header">
       <div class="left-section">
@@ -45,9 +48,45 @@
       </a>
     </header>
 
-
     <!-- Main Content -->
     <main class="content">
+
+      <div class="cat-preview">
+        <div class="cat-preview-padding">
+          <img class="cat-image" src="https://cdn2.thecatapi.com/images/0XYvRd7oD.jpg"/>
+
+          <div class="cat-id">
+
+            <div class="cat-name">
+              Abyssinian
+            </div>
+
+            <div class="cat-born">
+              <img class="cat-flag" src="https://flagcdn.com/eg.svg">
+              <div class="cat-country">
+                Egypt
+              </div>
+            </div>
+
+          </div>
+          
+          <div class="cat-description">
+            good cat
+          </div>
+
+          <div class="cat-temperament">
+            Shy , Happy
+          </div>
+
+          <button class="px-4 py-2 text-sm bg-cyan-500 rounded-full shadow-xl cat-learn-more">
+            Learn More
+          </button>
+        </div>
+      </div>
+
+
+
+
     </main>
   </body>
 
