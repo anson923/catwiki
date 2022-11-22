@@ -22,7 +22,6 @@ $( document ).ready(function() {
         cat_name.innerText = cat.name;
 
         let cat_flag = clone.querySelector('#cat-flag');
-        console.warn(countryData.data);
         let imgSrc = countryData.data.find(x=> x.alpha2Code === cat.country_code)?.flag;
         cat_flag.src = imgSrc === null ? '' : imgSrc;
 
