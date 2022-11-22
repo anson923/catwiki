@@ -1,9 +1,10 @@
 body {
   font-family: Roboto, Arial;
-  margin-bottom: 1000px;
   background-color: rgb(255, 221, 197);
 }
 
 .content {
-  
+  margin-bottom: 20px;
+  left:20px;
+  right: 20px
 }

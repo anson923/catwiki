@@ -15,8 +15,6 @@ $( document ).ready(function() {
       const template = document.querySelector('#cat-preview-template');
       const clone = template.content.cloneNode(true);
 
-      console.warn("Cat object",cat)
-
       let cat_image = clone.querySelector('#cat-image');
       cat_image.src = cat.image === undefined ? '/resources/img/pageLogo.png' : cat.image.url;
       
@@ -25,8 +23,7 @@ $( document ).ready(function() {
       cat_name.innerText = cat.name;
 
       let cat_flag = clone.querySelector('#cat-flag');
-      let imgSrc = countryData.data.find(x=> x.alpha2Code === cat.country_code).flag;
-      console.log(imgSrc)
+      let imgSrc = countryData.data.find(x=> x.alpha2Code === cat.country_code)?.flag;
       cat_flag.src = imgSrc === null ? '' : imgSrc;
 
       let cat_country = clone.querySelector('#cat-country');
@@ -40,8 +37,6 @@ $( document ).ready(function() {
 
       gridContent.appendChild(clone);
     }
-    
-    
   }
   else{
     console.error("Current Browser is not supporting Template!");
@@ -77,7 +72,6 @@ const tryFetchDataFromURL = async (objData) => {
   }
 }
 
-//Model
 function setLocalData(objData, newData)
 {
   objData.data = newData;
@@ -92,7 +86,6 @@ function getLocalData(key){
   return null;
 }
 
-//Controller
 function FetchData(objData)
 {
   objData.data = JSON.parse(getLocalData(objData.key));

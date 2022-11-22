@@ -6,7 +6,8 @@
   border: 2px solid black;
   border-radius: 5px;
   position: relative;
-  display: inline-block;
+
+  min-width: 300px;
 }
 .cat-preview-padding {
   padding: 5px;
@@ -22,7 +23,11 @@
 }
 
 .cat-preview-padding .cat-image {
-  width: 150px;
+  width: 230px;
+  height: 160px;
+
+  object-fit: cover;
+  object-position: top;
 }
 .cat-id {
   width: 100%;
@@ -53,7 +58,7 @@
 .cat-temperament {
   padding-top: 8px;
   display: -webkit-box;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
@@ -61,4 +66,16 @@
 .cat-learn-more {
   position:absolute;
   bottom:5px;
+}
+
+.cat-preview-grid {
+  display: flex;
+  grid-template-columns: 1fr 1fr 1fr;
+  flex-wrap: wrap;
+  
+  justify-content: center;
+  align-items: center;
+
+  row-gap: 40px;
+  column-gap: 16px;
 }
