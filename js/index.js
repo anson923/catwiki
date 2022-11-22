@@ -5,42 +5,45 @@ $( document ).ready(function() {
     while(catData.data === null && countryData.data === null)
         await new Promise(resolve => setTimeout(resolve, 1000));
     console.log("fetch successfully!");
+
+    if ('content' in document.createElement('template')){
+
+      const gridContent = document.getElementById('cat-preview-grid');
+      for(const cat of catData.data)
+      {
+        const template = document.querySelector('#cat-preview-template');
+        const clone = template.content.cloneNode(true);
+
+        let cat_image = clone.querySelector('#cat-image');
+        cat_image.src = cat.image === undefined ? '/resources/img/pageLogo.png' : cat.image.url;
+        
+
+        let cat_name = clone.querySelector('#cat-name');
+        cat_name.innerText = cat.name;
+
+        let cat_flag = clone.querySelector('#cat-flag');
+        console.warn(countryData.data);
+        let imgSrc = countryData.data.find(x=> x.alpha2Code === cat.country_code)?.flag;
+        cat_flag.src = imgSrc === null ? '' : imgSrc;
+
+        let cat_country = clone.querySelector('#cat-country');
+        cat_country.innerText = cat.origin;
+
+        let cat_description = clone.querySelector('#cat-description');
+        cat_description.innerText = cat.description;
+
+        let cat_temperament = clone.querySelector('#cat-temperament')
+        cat_temperament.innerText = cat.temperament
+
+        gridContent.appendChild(clone);
+      }
+    }
+    else{
+      console.error("Current Browser is not supporting Template!");
+    }
   })();
 
-  if ('content' in document.createElement('template'))
-  {
-    const gridContent = document.getElementById('cat-preview-grid');
-    for(const cat of catData.data)
-    {
-      const template = document.querySelector('#cat-preview-template');
-      const clone = template.content.cloneNode(true);
-
-      let cat_image = clone.querySelector('#cat-image');
-      cat_image.src = cat.image === undefined ? '/resources/img/pageLogo.png' : cat.image.url;
-      
-
-      let cat_name = clone.querySelector('#cat-name');
-      cat_name.innerText = cat.name;
-
-      let cat_flag = clone.querySelector('#cat-flag');
-      let imgSrc = countryData.data.find(x=> x.alpha2Code === cat.country_code)?.flag;
-      cat_flag.src = imgSrc === null ? '' : imgSrc;
-
-      let cat_country = clone.querySelector('#cat-country');
-      cat_country.innerText = cat.origin;
-
-      let cat_description = clone.querySelector('#cat-description');
-      cat_description.innerText = cat.description;
-
-      let cat_temperament = clone.querySelector('#cat-temperament')
-      cat_temperament.innerText = cat.temperament
-
-      gridContent.appendChild(clone);
-    }
-  }
-  else{
-    console.error("Current Browser is not supporting Template!");
-  }
+  
 });
 
 const catData = {
@@ -60,9 +63,8 @@ const tryFetchDataFromURL = async (objData) => {
     console.log('%c Fetching Data...', 'color:red')
     const response = await fetch(objData.url);
     const data = await response.json();
-    // console.table(data);
 
-    setLocalData(objData,JSON.stringify(data));
+    setLocalData(objData,data);
     
     console.log('%c Success','color:green')
   }
@@ -75,7 +77,7 @@ const tryFetchDataFromURL = async (objData) => {
 function setLocalData(objData, newData)
 {
   objData.data = newData;
-  window.localStorage.setItem(objData.key, newData);
+  window.localStorage.setItem(objData.key, JSON.stringify(newData));
 }
 
 function getLocalData(key){
