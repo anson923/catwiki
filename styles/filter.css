@@ -1,0 +1,19 @@
+.filter {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: nowrap;
+  align-items: center;
+
+  height: 100px;
+
+  border-radius: 2px;
+  border: 2px solid transparent;
+  margin-bottom: 20px;
+}
+
+.filter-name-title,
+.filter-country-title
+{
+  text-align: center;
+}
+
