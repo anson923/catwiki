@@ -42,7 +42,7 @@ function filterCatData(cat_data){
   }
   if(catFilter.country !== "All")
   {
-    filterData = filterData.filter(x=> x.origin === catFilter.country);
+    filterData = filterData.filter(x=> x.country_code === catFilter.country);
   }
   else
   {
@@ -62,7 +62,6 @@ function clearAllCatPreview()
 function FilterCountry(dropdown)
 {
   catFilter.country = dropdown.value;
-  console.log(catFilter.country);
   clearAllCatPreview();
   const tempData = Object.create(catData);
   tempData.data = filterCatData(catData.data);
@@ -76,11 +75,14 @@ function InsertFilterCountry() {
     const dropdownList = document.getElementById("dropdown-country");
     for(const country of countryData.data)
     {
-      const element = document.createElement('option');
-      element.setAttribute('value',country.name);
-      element.innerText = country.name;
-
-      dropdownList.appendChild(element);
+      if(catData.data.some(x=> x.country_code === country.alpha2Code))
+      {
+        const element = document.createElement('option');
+        element.setAttribute('value',country.alpha2Code);
+        element.innerText = country.name;
+  
+        dropdownList.appendChild(element);
+      }
     }
   }
   else
@@ -104,13 +106,17 @@ function InsertCatPreivews(cat_data){
       const clone = template.content.cloneNode(true);
 
       let cat_image = clone.querySelector('#cat-image');
-      cat_image.src = cat.image === undefined ? '/resources/img/pageLogo.png' : cat.image.url;
+      cat_image.src = cat.image === undefined ? 'resources/img/pageLogo.png' : cat.image.url;
       
-
       let cat_name = clone.querySelector('#cat-name');
       cat_name.innerText = cat.name;
 
       let cat_flag = clone.querySelector('#cat-flag');
+      // Handle Singapore in API data incorrect
+      if(cat.country_code == 'SP')
+      {
+        cat.country_code = 'SG';
+      }
       let imgSrc = countryData.data.find(x=> x.alpha2Code === cat.country_code)?.flag;
       cat_flag.src = imgSrc === null ? '' : imgSrc;
 
