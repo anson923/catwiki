@@ -1,4 +1,4 @@
-body {
+body main {
   font-family: Roboto, Arial;
   background-color: rgb(255, 221, 197);
 }
@@ -12,9 +12,11 @@ body {
 
 .loading-anim { 
   background-color: rgb(255, 221, 197);
+  height: 1000px;
 }
 
 #loading-border{
   width: 5rem;
   height: 5rem;
+  margin-top: 200px;
 }

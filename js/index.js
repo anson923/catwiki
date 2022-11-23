@@ -2,7 +2,7 @@ $( document ).ready(function() {
   //Wait until cat data and country data is loaded.
   (async() => {
     EnableLoadingAnim();
-    while(catData.data === null && countryData.data === null)
+    while(catData.data === null || countryData.data === null)
         await new Promise(resolve => setTimeout(resolve, 1000));
     console.log("fetch successfully!");
     DisableLoadingAnim();
