@@ -8,6 +8,7 @@
   position: relative;
 
   min-width: 300px;
+  
 }
 .cat-preview-padding {
   padding: 5px;
@@ -20,6 +21,7 @@
   margin-top: 0;
 
   height: 1fr;
+  
 }
 
 .cat-preview-padding .cat-image {
@@ -77,6 +79,5 @@
 
   row-gap: 40px;
   column-gap: 16px;
-
-  background-color: rgb(255, 221, 197);
+  
 }

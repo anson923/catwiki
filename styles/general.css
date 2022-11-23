@@ -1,18 +1,19 @@
-body main {
+
+body {
   font-family: Roboto, Arial;
   background-color: rgb(255, 221, 197);
+  margin:0;
+  padding:0;
 }
 
 .content {
-  margin-bottom: 20px;
+  padding-bottom: 30px;
   left: 20px;
   right: 20px;
   background-color: rgb(255, 221, 197);
-  height: 1000px;
 }
 
 .loading-anim { 
-  background-color: rgb(255, 221, 197);
   height: 1000px;
 }
 

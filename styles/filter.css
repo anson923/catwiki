@@ -15,5 +15,10 @@
 .filter-country-title
 {
   text-align: center;
+  align-items: center;
+}
+
+.filter-country-title {
+  padding: 8px;
 }
 
