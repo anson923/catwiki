@@ -51,7 +51,6 @@ function InsertFilterCountry() {
     for(const country of countryData.data)
     {
       const element = document.createElement('option');
-      console.log(country);
       element.setAttribute('value',country.name);
       element.innerText = country.name;
 
