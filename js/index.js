@@ -8,7 +8,11 @@ $( document ).ready(function() {
     DisableLoadingAnim();
 
     ResetFilter();
-    InsertCatPreivews(filterCatData(catData));
+
+    const tempData = Object.create(catData);
+    tempData.data = filterCatData(catData.data);
+  
+    InsertCatPreivews(tempData);
     InsertFilterCountry();
     
   })();
@@ -18,7 +22,7 @@ $( document ).ready(function() {
 function InitFilter()
 {
   const filter = {
-    country: [],
+    country: "All",
     name: ""
   };
 
@@ -31,17 +35,39 @@ function ResetFilter()
 }
 
 function filterCatData(cat_data){
-  const filterData = cat_data;
+  let filterData = Object.create(cat_data);
   if(catFilter.name !== "")
   {
 
   }
-  if(catFilter.country.length > 0)
+  if(catFilter.country !== "All")
   {
-
+    filterData = filterData.filter(x=> x.origin === catFilter.country);
+  }
+  else
+  {
+    filterData = Object.create(catData.data);
   }
 
   return filterData;
+}
+
+function clearAllCatPreview()
+{
+  const gridContent = document.getElementById('cat-preview-grid');
+
+  gridContent.innerHTML = '';
+}
+
+function FilterCountry(dropdown)
+{
+  catFilter.country = dropdown.value;
+  console.log(catFilter.country);
+  clearAllCatPreview();
+  const tempData = Object.create(catData);
+  tempData.data = filterCatData(catData.data);
+  
+  InsertCatPreivews(tempData);
 }
 
 function InsertFilterCountry() {
@@ -67,6 +93,11 @@ function InsertCatPreivews(cat_data){
   if ('content' in document.createElement('template')){
 
     const gridContent = document.getElementById('cat-preview-grid');
+    if(cat_data.data.length === 0){
+      console.log("No match");
+      return;
+    } 
+    
     for(const cat of cat_data.data)
     {
       const template = document.querySelector('#cat-preview-template');
