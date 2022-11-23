@@ -31,10 +31,17 @@
   object-fit: cover;
   object-position: top;
 }
+
+.cat-name,
+.cat-born {
+  display: block;
+  text-align: center;
+}
+
 .cat-id {
   width: 100%;
-  display: flex;
   justify-content: center;
+  
 }
 .cat-born {
   padding-left: 2px;
@@ -43,6 +50,7 @@
 .cat-flag {
   height: 18px;
   display: inline-block;
+  margin-left: -10px;
 }
 .cat-country {
   display: inline-block;
