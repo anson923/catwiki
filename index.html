@@ -1,70 +1,4 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8" lang="en">
-    <title>
-      Cat Wikipedia
-    </title>
-
-    <!-- Font Packages -->
-    <link rel="preconnect" href="https://fonts.googleapis.com"> 
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700&display=swap" rel="stylesheet">
-
-    <!-- CSS files -->
-    <link rel="stylesheet" href="styles/general.css"/>
-    <link rel="stylesheet" href="styles/header.css"/>
-    <link rel="stylesheet" href="styles/cat_grid.css"/>
-
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- jQuery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
-    <!-- Script -->
-    <script src="js/index.js"></script>
-
-    <link rel="shortcut icon" href="./resources/img/pageLogo.png">
-
-  </head>
-
-  <body>
-    <!-- Header -->
-    <header class="header">
-      <div class="left-section">
-        <a href="index.html" target="">
-          <button class="px-10 py-4 text-sm bg-cyan-500 rounded-full shadow-xl header-button ">
-            Cat Dictionary
-          </button>
-        </a>
-        
-      </div>
-      <a href="index.html">
-        <img class="pagelogo" src="resources/img/pageLogo.png" alt="Cat Wikipedia Logo"/>
-      </a>
-      
-      
-      <a href="index.html" target="">
-        <button class="px-10 py-4 text-sm bg-cyan-500 rounded-full shadow-xl header-button ">
-          About Us
-        </button>
-      </a>
-    </header>
-
-    <!-- section Content -->
-    <section class="content">
-      <div id="cat-preview-grid" class="cat-preview-grid">
-
-      </div>
-      
-    </section>
-  </body>
-
-</html>
-
-
-
+<!-- Grid Preview Template -->
 <template id="cat-preview-template">
   <div class="cat-preview">
     <div class="cat-preview-padding">
@@ -99,3 +33,88 @@
     </div>
   </div>
 </template>
+
+<!-- Loading Block -->
+<template id="loading-template">
+  <div id="loading-anim" class="loading-anim">
+    <div class="d-flex justify-content-center text-primary">
+      <div id="loading-border" class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+  </div>
+</template>
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" lang="en">
+    <title>
+      Cat Wikipedia
+    </title>
+
+    <!-- Font Packages -->
+    <link rel="preconnect" href="https://fonts.googleapis.com"> 
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700&display=swap" rel="stylesheet">
+
+    <!-- CSS files -->
+    <link rel="stylesheet" href="styles/general.css"/>
+    <link rel="stylesheet" href="styles/header.css"/>
+    <link rel="stylesheet" href="styles/cat_grid.css"/>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <!-- Script -->
+    <script src="js/index.js"></script>
+
+    <link rel="shortcut icon" href="./resources/img/pageLogo.png">
+
+  </head>
+
+  <body>
+    <!-- Header -->
+    <header class="header">
+      <div class="left-section">
+        <a href="index.html" target="">
+          <button class="px-10 py-4 text-sm bg-cyan-500 rounded-full shadow-xl header-button ">
+            Cat Dictionary
+          </button>
+          
+        </a>
+        
+      </div>
+      <a href="index.html">
+        <img class="pagelogo" src="resources/img/pageLogo.png" alt="Cat Wikipedia Logo"/>
+      </a>
+      
+      
+      <a href="index.html" target="">
+        <button class="px-10 py-4 text-sm bg-cyan-500 rounded-full shadow-xl header-button ">
+          About Us
+        </button>
+      </a>
+    </header>
+    <div id="loading-block">
+
+    </div>
+    <main class="main">
+      <!-- section Content -->
+      <section class="content">
+        <div id="cat-preview-grid" class="cat-preview-grid">
+
+        </div>
+        
+      </section>
+    </main>
+    
+  </body>
+
+</html>

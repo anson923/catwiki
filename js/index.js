@@ -1,10 +1,11 @@
 $( document ).ready(function() {
   //Wait until cat data and country data is loaded.
   (async() => {
-
+    EnableLoadingAnim();
     while(catData.data === null && countryData.data === null)
         await new Promise(resolve => setTimeout(resolve, 1000));
     console.log("fetch successfully!");
+    DisableLoadingAnim();
 
     if ('content' in document.createElement('template')){
 
@@ -45,6 +46,23 @@ $( document ).ready(function() {
   
 });
 
+function EnableLoadingAnim()
+{
+  const loadingTemplate = document.querySelector('#loading-template');
+  const loadingDiv = document.querySelector('#loading-block');
+  const loadingClone = loadingTemplate.content.cloneNode(true);
+  loadingDiv.appendChild(loadingClone);
+}
+
+function DisableLoadingAnim() {
+  const loadingIcon = document.getElementById('loading-anim');
+  const loadingDiv = document.querySelector('#loading-block');
+  if(loadingIcon && loadingDiv) {
+    loadingDiv.removeChild(loadingIcon);
+  }
+}
+
+
 const catData = {
   url:'https://api.thecatapi.com/v1/breeds',
   key:'catdata_v1',
@@ -61,11 +79,15 @@ const tryFetchDataFromURL = async (objData) => {
   try{
     console.log('%c Fetching Data...', 'color:red')
     const response = await fetch(objData.url);
-    const data = await response.json();
+    if(response.ok){
+      const data = await response.json();
 
-    setLocalData(objData,data);
-    
-    console.log('%c Success','color:green')
+      setLocalData(objData,data);
+    }
+    else{
+      throw new Error("responed not ok", {cause: response});
+    }
+    console.log('%c Fetch data successful!','color:green')
   }
   catch(err)
   {
