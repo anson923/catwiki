@@ -5,7 +5,6 @@ $( document ).ready(function() {
     while(catData.data === null || countryData.data === null)
         await new Promise(resolve => setTimeout(resolve, 1000));
     console.log("fetch successfully!");
-    DisableLoadingAnim();
 
     ResetFilter();
 
@@ -14,7 +13,6 @@ $( document ).ready(function() {
   
     InsertCatPreivews(tempData);
     InsertFilterCountry();
-    
   })();
 });
 
@@ -64,6 +62,7 @@ function clearAllCatPreview()
 
 function FilterCatName(inputText)
 {
+  EnableLoadingAnim();
   catFilter.name = inputText;
   clearAllCatPreview();
 
@@ -75,6 +74,7 @@ function FilterCatName(inputText)
 
 function FilterCountry(dropdown)
 {
+  EnableLoadingAnim();
   catFilter.country = dropdown.value;
   clearAllCatPreview();
   const tempData = Object.create(catData);
@@ -111,6 +111,7 @@ function InsertCatPreivews(cat_data){
     const gridContent = document.getElementById('cat-preview-grid');
     if(cat_data.data.length === 0){
       console.log("No match");
+      DisableLoadingAnim();
       return;
     } 
     
@@ -149,6 +150,7 @@ function InsertCatPreivews(cat_data){
   else{
     console.error("Current Browser is not supporting Template!");
   }
+  DisableLoadingAnim();
 }
 
 function setLocalData(objData, newData)
@@ -197,6 +199,7 @@ const tryFetchDataFromURL = async (objData) => {
 
 function EnableLoadingAnim()
 {
+  DisableLoadingAnim();
   const loadingTemplate = document.querySelector('#loading-template');
   const loadingDiv = document.querySelector('#loading-block');
   const loadingClone = loadingTemplate.content.cloneNode(true);
@@ -229,4 +232,3 @@ let catFilter = InitFilter();
 console.log("fetching for data...");
 FetchData(catData);
 FetchData(countryData);
-
