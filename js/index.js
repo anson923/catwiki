@@ -221,6 +221,7 @@ function SetDetailPage(cat)
     console.warn("Cannot find cat data");
     return;
   }
+  EnableLoadingAnim();
   $('html, body').animate({ scrollTop: 0 }, 'fast');
   const contentGrid = document.querySelector('#content');
   if(contentGrid) contentGrid.classList.add('hide');
@@ -285,6 +286,7 @@ function SetDetailPage(cat)
   rankSection.appendChild(createCatRankDiv(cat.indoor,'Indoor'));
   
   cat_detail_section.appendChild(clone);
+  DisableLoadingAnim();
 }
 
 function createCatRankDiv(value,text)
