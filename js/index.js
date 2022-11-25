@@ -213,6 +213,94 @@ function DisableLoadingAnim() {
     loadingDiv.removeChild(loadingIcon);
   }
 }
+
+function SetDetailPage(cat)
+{
+  if(cat === null || cat === undefined)
+  {
+    console.warn("Cannot find cat data");
+    return;
+  }
+  $('html, body').animate({ scrollTop: 0 }, 'fast');
+  const contentGrid = document.querySelector('#content');
+  if(contentGrid) contentGrid.classList.add('hide');
+
+  const cat_detail_section = document.querySelector('#cat-detail');
+
+  const template = document.querySelector('#cat-detail-template');
+  const clone = template.content.cloneNode(true);
+
+  let cat_image = clone.querySelector('#cat-detail-image');
+  cat_image.src = cat.image === undefined ? 'resources/img/pageLogo.png' : cat.image.url;
+      
+  let cat_name = clone.querySelector('#cd-name');
+  cat_name.innerText = cat.name;
+
+  let cat_flag = clone.querySelector('#cd-flag');
+  // Handle Singapore in API data incorrect
+  if(cat.country_code == 'SP')
+  {
+    cat.country_code = 'SG';
+  }
+  let imgSrc = countryData.data.find(x=> x.alpha2Code === cat.country_code)?.flag;
+  cat_flag.src = imgSrc === null ? '' : imgSrc;
+
+  let cat_country = clone.querySelector('#cd-country');
+  cat_country.innerText = cat.origin;
+
+  let cat_weight = clone.querySelector('#cd-weight');
+  cat_weight.innerText = cat.weight.metric + " kg";
+
+  let cat_lifespan = clone.querySelector('#cd-lifespan');
+  cat_lifespan.innerText = cat.life_span + " years";
+
+  let cat_description = clone.querySelector('#cd-description');
+  cat_description.innerText = cat.description;
+
+  let cat_temperament = clone.querySelector('#cd-temperament');
+  cat_temperament.innerText = cat.temperament;
+
+  let cat_wiki_btn = clone.querySelector('#cd-wiki');
+  cat_wiki_btn.onclick = () => {
+    window.open(cat.wikipedia_url, '_blank');
+  };
+
+  // Cat Levels
+  const rankSection = clone.querySelector('#cat-detail-levels');
+
+  rankSection.appendChild(createCatRankDiv(cat.affection_level,'Affection Level'));
+  rankSection.appendChild(createCatRankDiv(cat.adaptability,'Adaptability'));
+  rankSection.appendChild(createCatRankDiv(cat.energy_level,'Energy level'));
+  
+  rankSection.appendChild(createCatRankDiv(cat.child_friendly,'Child Friendly'));
+  rankSection.appendChild(createCatRankDiv(cat.dog_friendly,'Dog Friendly'));
+  rankSection.appendChild(createCatRankDiv(cat.grooming,'Gromming'));
+  rankSection.appendChild(createCatRankDiv(cat.health_issues,'Health Issue'));
+  rankSection.appendChild(createCatRankDiv(cat.intelligence,'Intelligence'));
+
+  rankSection.appendChild(createCatRankDiv(cat.rare,'Rarity'));
+  rankSection.appendChild(createCatRankDiv(cat.short_legs,'Short Leg'));
+  rankSection.appendChild(createCatRankDiv(cat.social_needs,'Social Needs'));
+  rankSection.appendChild(createCatRankDiv(cat.stranger_friendly,'Stranger Friendly'));
+  rankSection.appendChild(createCatRankDiv(cat.indoor,'Indoor'));
+  
+  cat_detail_section.appendChild(clone);
+}
+
+function createCatRankDiv(value,text)
+{
+  const rankValue = document.createElement('div');
+  rankValue.classList.add('cat-detail-rank');
+  rankValue.innerText = `${text}: ${value}`;
+  return rankValue;
+}
+
+
+function OnClickLearnMore(cat_preview)
+{
+  const cat_id = cat_preview.querySelector('#cat-name').innerText;
+  SetDetailPage(catData.data.find(x=> x.name === cat_id));
+}
 //#endregion
 
 const catData = {

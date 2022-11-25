@@ -12,6 +12,10 @@ body {
   right: 20px;
 }
 
+.hide {
+  display: none;
+}
+
 .loading-anim { 
   height: 1000px;
 }
