@@ -179,6 +179,7 @@ function FetchData(objData)
 
 const tryFetchDataFromURL = async (objData) => {
   try{
+    
     console.log('%c Fetching Data...', 'color:red')
     const response = await fetch(objData.url);
     if(response.ok){

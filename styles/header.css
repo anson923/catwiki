@@ -1,6 +1,5 @@
 .pagelogo {
-  min-width: 230px;
-  height: 150px;
+  
 }
 
 .header{
@@ -20,4 +19,6 @@
   color: white;
   box-shadow: 0 5px 5px rgba(0,0,0,0.3);
   font-weight: 500;
+  width: 100px;
+  height: 50px;
 }
